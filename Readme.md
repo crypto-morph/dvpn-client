@@ -70,6 +70,7 @@ sentinelcli query subscriptions \
 
 Use this subscription number in the connect command
 
+```bash
 sudo sentinelcli connect 513121 q   \
     --chain-id sentinelhub-2 \
     --node https://rpc.sentinel.co:443 \
@@ -78,6 +79,7 @@ sudo sentinelcli connect 513121 q   \
     --home "${HOME}/.sentinelcli" \
     --keyring-backend file \
 	--from default
+```
 
 After a bunch of wireguard commands run - you should be on the VPN
 
