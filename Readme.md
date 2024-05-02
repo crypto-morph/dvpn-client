@@ -6,11 +6,6 @@
 sudo apt-get update && \
 sudo apt-get install golang make curl wireguard-tools && \
 git clone https://github.com/sentinel-official/cli-client.git "${HOME}/sentinelcli"
-
-cd "${HOME}/sentinelcli"
-git checkout vX.X.X # always make sure it's the latest version
-make install
-sudo ln -s "${HOME}/sentinelcli" /usr/local/bin/sentinelcli
 ```
 
 ## Install the Sentinel CLI
@@ -31,7 +26,7 @@ sentinelcli keys add \
     --keyring-backend file \
     default
 ```
-You will get a pass phrase (DON'T LOSE IT) - and an address - you can a _small_ test amount of DVPN to this address using Kelpr or another compatible wallet. I send 577 DVPN (which is about $0.70 at current rates!) 
+You will get a pass phrase (DON'T LOSE IT) - and an address - you can send a _small_ test amount of DVPN to this address using Kelpr or another compatible wallet. I send 577 DVPN (which is about $0.70 at current rates) as proof of concept.
 
 ## Find a list of nodes you can subscribe to
 
@@ -53,7 +48,7 @@ sentinelcli tx node subscribe {id-of-node-to-subscribe-to} {gigabytes-to-subscri
   --from default
 ```
 
-NOTE: you either put gigabytes OR hours - the other one needs to be zero  
+> **_NOTE:_**  you either put gigabytes OR hours - the other one needs to be zero  
 
 A 'real world' example would look like this:
 
@@ -64,7 +59,6 @@ sentinelcli tx node subscribe sentnode1qmx0zyuqww9t0pvtl8glsnhzgmrn3lyjsteacy 1 
   --gas-prices 0.1udvpn \
   --from default
 ```
-
 You now need your subscription number - which can be found like this (where `[MY-ADDRESS]` is your `sent` address):
 
 ```bash
@@ -84,3 +78,18 @@ sudo sentinelcli connect 513121 q   \
     --home "${HOME}/.sentinelcli" \
     --keyring-backend file \
 	--from default
+
+After a bunch of wireguard commands run - you should be on the VPN
+
+You can check by running:
+
+`curl ifconfig.co`
+
+and checking the IP against your normal one.
+
+To disconnect simply run:
+
+```bash
+sudo sentinelcli disconnect \
+    --home "${HOME}/.sentinelcli"
+```
