@@ -4,8 +4,7 @@
 
 ```bash
 sudo apt-get update && \
-sudo apt-get install golang make curl wireguard-tools && \
-git clone https://github.com/sentinel-official/cli-client.git "${HOME}/sentinelcli"
+sudo apt-get install golang make curl wireguard-tools
 ```
 
 ## Install the Sentinel CLI
